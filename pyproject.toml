@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "devsetup"
+version = "0.0.1"
+description = "a tool for managing your local dev environment (using brew)"
+authors = ["Nathan Heaps <nsheaps@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pyyaml = "^6.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
