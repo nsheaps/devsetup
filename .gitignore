@@ -163,4 +163,6 @@ cython_debug/
 megalinter-reports/
 
 # local configs
-.config/**
+.config/
+
+.ruff_cache/
