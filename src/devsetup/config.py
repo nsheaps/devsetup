@@ -3,13 +3,13 @@ import os
 
 import yaml
 
-from .errors import DEVSETUP_CONFIG_FOLDER_EXISTS_BUT_IS_NOT_A_DIRECTORY
+from .commands.errors import DEVSETUP_CONFIG_FOLDER_EXISTS_BUT_IS_NOT_A_DIRECTORY
 
 logger = logging.getLogger(__name__)
 
 CONFIG = {}
-
-CONFIG_FOLDER = "~/.config/devsetup/"
+# default to ~ unless overridden by an environment variable
+CONFIG_FOLDER =  os.environ.get("DEVSETUP_CONFIG_LOCATION", "~/.config/devsetup/")
 CONFIG_FOLDER_EXPANDED = os.path.expanduser(CONFIG_FOLDER)
 
 CONFIG_FILE = "config.yaml"
@@ -30,7 +30,7 @@ def load_config():
             exit(DEVSETUP_CONFIG_FOLDER_EXISTS_BUT_IS_NOT_A_DIRECTORY)
     else:
         logger.info(f"{CONFIG_FOLDER} does not exist, making it")
-        os.mkdir(CONFIG_FOLDER_EXPANDED)
+        os.makedirs(CONFIG_FOLDER_EXPANDED)
 
     # make sure ~/.config/devsetup/config.yaml exists
     if os.path.exists(CONFIG_FILE_PATH_EXPANDED):

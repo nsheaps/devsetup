@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# don't use DIRENV_DIR, it's internal to direnv
+exec poetry run python "$DIRENV_ROOT/src/main.py" "$@"
+

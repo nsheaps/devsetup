@@ -161,3 +161,6 @@ cython_debug/
 
 # megalinter
 megalinter-reports/
+
+# local configs
+.config/**
