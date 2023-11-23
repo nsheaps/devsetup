@@ -30,7 +30,15 @@ devsetup <command> # alias to poetry run python ./src/main.py <command>
 
 ### Linting
 
-`npx mega-linter-runner --flavor cupcake`
+`npx mega-linter-runner --flavor cupcake` includes all linters that run in CI.
+
+#### python
+
+`poetry run black .` - autofixes what it can (`--check` to just check)
+
+`poetry run ruff . --fix` - autofixes what it can
+
+
 
 
 ## The `devsetup` command
@@ -66,7 +74,7 @@ Use this as a way to gather information about a user's machine to diagnose issue
 
 These are examples but some setup scripts come out of the box for you to customize and use. These boil down into additional devsetup formulas (like `devsetup-configure-git`), which then runs the script with the arguments passed through, but doesn't clutter `$PATH`.
 
-When installed, the formula should check to see if conflicting configurations exist and warn accordingly.
+When running the configuration script installed by the formula, it should check to see if conflicting configurations exist and warn accordingly.
 Passing `--preserve` will make it non-interactive and assume that the configuration is correct and the formula will adopt it as it's own if possible. The configuration may not complete non-interactively if the configuration is not considered complete.
 
 When upgraded, the formula should only configure new or additional things, and warn if it is going to change something that already exists (such as the default ssh key). This is an alias to installing with the `--preserve` flag.

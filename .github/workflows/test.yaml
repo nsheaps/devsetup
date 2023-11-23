@@ -1,6 +1,8 @@
 ---
 name: Test
-on: [push]
+on:
+  pull_request:
+    branches: [master, main]
 
 jobs:
   test:
@@ -45,17 +47,22 @@ jobs:
           TAP="nsheaps/homebrew-devsetup"
           # exit 1 if "$(devsetup get-tap)" != ""
           if [[ "$(devsetup get-tap)" != "" ]]; then
-            echo "get-tap is not empty"
+            echo "❌ get-tap is not empty on initial config"
             exit 1
           fi
 
-          devsetup set-tap $TAP
+          if ! devsetup set-tap $TAP; then
+            echo "❌ set-tap failed"
+            exit 1
+          fi
 
           # exit 1 if "$(devsetup get-tap)" != "$TAP"
           if [[ "$(devsetup get-tap)" != "$TAP" ]]; then
-            echo "get-tap is not $TAP"
+            echo "❌ get-tap is not $TAP"
             exit 1
           fi
+
+          echo "✅ set-tap worked properly"
 
           
 

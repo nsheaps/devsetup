@@ -10,6 +10,7 @@ from devsetup.commands.errors import DEVSETUP_TAP_NOT_SET
 
 logger = logging.getLogger(__name__)
 
+
 def get_tap(**kwargs):
     """Prints the current tap (according to the config)"""
     # use print so nothing else gets printed since this is used elsewhere

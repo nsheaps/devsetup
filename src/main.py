@@ -2,6 +2,7 @@ import logging
 from argparse import ArgumentParser
 
 from devsetup.commands.tap import get_tap, set_tap
+from devsetup.commands.packages import install
 
 
 def main():
@@ -25,7 +26,7 @@ def main():
     # install <formula>, also supports i <formula>
     install_parser = subparsers.add_parser("install", aliases=["i"])
     install_parser.add_argument("formula", help="formula to install")
-
+    install_parser.set_defaults(func=install)
 
     args = parser.parse_args()
 
@@ -39,11 +40,6 @@ def main():
     kwargs = vars(args)
 
     args.func(**kwargs)
-
-    # if args.command == "get-tap":
-    #     get_tap()
-    # elif args.command == "set-tap":
-    #     set_tap(args.tap)
 
 
 if __name__ == "__main__":

@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 CONFIG = {}
 # default to ~ unless overridden by an environment variable
-CONFIG_FOLDER =  os.environ.get("DEVSETUP_CONFIG_LOCATION", "~/.config/devsetup/")
+CONFIG_FOLDER = os.environ.get("DEVSETUP_CONFIG_LOCATION", "~/.config/devsetup/")
 CONFIG_FOLDER_EXPANDED = os.path.expanduser(CONFIG_FOLDER)
 
 CONFIG_FILE = "config.yaml"
