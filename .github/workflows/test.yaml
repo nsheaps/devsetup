@@ -3,6 +3,11 @@ name: Test
 on:
   push: {}
 
+concurrency:
+  group: ${{ github.ref_name }}-${{ github.workflow }}
+  cancel-in-progress: true
+  # cancel-in-progress: ${{ github.ref_name != github.event.repository.default_branch }} # Cancel previous runs if new one is triggered on non-default branch
+
 jobs:
   test:
     runs-on: ubuntu-latest
