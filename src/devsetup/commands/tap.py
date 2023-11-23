@@ -6,7 +6,7 @@ import logging
 
 from devsetup.config import CONFIG, write_config
 from devsetup.brew.tap import get_tap as _get_tap, TapNotSetError
-from devsetup.commands.errors import DEVSETUP_TAP_NOT_SET
+from devsetup.lib.errors import DEVSETUP_TAP_NOT_SET
 
 logger = logging.getLogger(__name__)
 

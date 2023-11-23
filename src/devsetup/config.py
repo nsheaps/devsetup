@@ -3,7 +3,7 @@ import os
 
 import yaml
 
-from .commands.errors import DEVSETUP_CONFIG_FOLDER_EXISTS_BUT_IS_NOT_A_DIRECTORY
+from .lib.errors import DEVSETUP_CONFIG_FOLDER_EXISTS_BUT_IS_NOT_A_DIRECTORY
 
 logger = logging.getLogger(__name__)
 
