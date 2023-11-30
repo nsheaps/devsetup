@@ -1,8 +1,8 @@
 import logging
 from argparse import ArgumentParser
 
-from devsetup.commands.tap import get_tap, set_tap
 from devsetup.commands.packages import install, uninstall
+from devsetup.commands.tap import get_tap, set_tap
 
 
 def main():

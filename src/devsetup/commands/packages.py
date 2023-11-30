@@ -1,12 +1,9 @@
 import logging
 import os
-import pty
-import subprocess
-import sys
+
 from devsetup.brew.tap import get_tap
 from devsetup.lib.errors import FORMULA_CONTAINS_SLASHES
 from devsetup.lib.utils import catch_print_and_exit, run_command_and_stream_output_lines
-
 
 logger = logging.getLogger(__name__)
 # handler = logging.StreamHandler()
@@ -37,7 +34,8 @@ def install(formula: str, **kwargs):
     # install the formula
     logger.info(f"Installing {formula} from {tap}...")
 
-    homebrew_env = os.environ.copy().update(
+    homebrew_env = os.environ.copy()
+    homebrew_env.update(
         {
             "HOMEBREW_NO_AUTO_UPDATE": "1",
         }
@@ -76,6 +74,6 @@ def uninstall(formula: str, **kwargs):
             logger.info,
             homebrew_env,
         )
-    
+
     # uninstall the formula
     logger.info(f"Uninstalled {formula} from {tap}!")

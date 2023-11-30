@@ -10,6 +10,7 @@ from devsetup.config import CONFIG
 
 logger = logging.getLogger(__name__)
 
+
 @contextlib.contextmanager
 def catch_print_and_exit():
     """
@@ -32,12 +33,9 @@ def catch_print_and_exit():
         else:
             exit(1)
 
+
 def run_command_and_stream_output_lines(
-    command: list[str], 
-    printer: Callable, 
-    env: dict[str, str],
-    *args, 
-    **kwargs
+    command: list[str], printer: Callable, env: dict[str, str], *args, **kwargs
 ):
     printer(f"ISPTY = {os.isatty(sys.stdout.fileno())}")
     master, slave = pty.openpty()  # Open a new pseudo-terminal
