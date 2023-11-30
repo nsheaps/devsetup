@@ -1,7 +1,3 @@
-"""
-This module contains the commands that can be run from the command line.
-"""
-
 import logging
 
 from devsetup.config import CONFIG, write_config
