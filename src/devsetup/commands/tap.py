@@ -24,5 +24,5 @@ def get_tap(**kwargs):
 def set_tap(tap: str, **kwargs):
     """Sets the tap in the config and saves it"""
     CONFIG["tap"] = tap
-    logger.info("tap set to %s", tap)
     write_config()
+    logger.info("tap set to %s", tap)
