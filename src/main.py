@@ -2,7 +2,7 @@ import logging
 from argparse import ArgumentParser
 
 from devsetup.commands.tap import get_tap, set_tap
-from devsetup.commands.packages import install
+from devsetup.commands.packages import install, uninstall
 
 
 def main():
@@ -28,6 +28,11 @@ def main():
     install_parser.add_argument("formula", help="formula to install")
     install_parser.set_defaults(func=install)
 
+    # uninstall <formula>, also supports u <formula>
+    uninstall_parser = subparsers.add_parser("uninstall", aliases=["u"])
+    uninstall_parser.add_argument("formula", help="formula to uninstall")
+    uninstall_parser.set_defaults(func=uninstall)
+
     args = parser.parse_args()
 
     if args.debug:
@@ -35,6 +40,8 @@ def main():
         from devsetup import config
 
         config.set_debug(True)
+    else:
+        logging.basicConfig(level=logging.INFO)
 
     # convert args from Namespace to dict
     kwargs = vars(args)
